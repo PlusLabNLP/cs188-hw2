@@ -64,7 +64,7 @@ class LanguageModel(object):
         words = sent.split()
         ngrams = []
         for i in range(len(words)-n+1):
-            # TODO (Task 1): construct a ngram tuple with the first element being {words[i]}
+            # TODO (Task 1): construct a ngram tuple with the first element being words[i]
             ngram = None # replace None
             ngrams.append(ngram)
         return ngrams
@@ -117,11 +117,11 @@ class LanguageModel(object):
                         log_prob += math.log2(self.train_ngram_freq[ngram] / self.word_cnt)
                     else:
                         # TODO (Task 2): compute the log probability when using add-k smoothing.
-                        # Recall that p(unigram) = (cnt(unigram)+k) / (word_cnt + k*|V|) 
+                        # Recall that p(x_j) = (cnt(x_j)+k) / (word_cnt + k*|V|) 
                         pass
                 else:
-                    # TODO (Task 2): compute the log probability for n-gram models (n>2).
-                    # For add-k smoothing, we have p(ngram) = (cnt((x_1, ..., x_n))+k) / (cnt((x_1, ..., x_{n-1})) + k*|V|) 
+                    # TODO (Task 2): compute the log probability for n-gram models (n>=2).
+                    # For add-k smoothing, we have p(x_j|x_i,...,x_{j-1}) = (cnt((x_i, ..., x_j))+k) / (cnt((x_i, ..., x_{j-1})) + k*|V|) 
                     pass
             else:
                 # Case 2: this ngram does not appear in the training data.
